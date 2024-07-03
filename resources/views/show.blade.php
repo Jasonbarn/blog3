@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.blog')
+
 @section('content')
 <div class="container">
  <h1>{{ $post->title }}</h1>
@@ -9,11 +10,11 @@
  @foreach ($post->comments as $comment)
  <div class="mb-2">
  <p>{{ $comment->content }}</p>
- <small>Par {{ $comment->user->name }}</small>
+ <small>Par {{ $comment->user->name }} le {{$comment->created_at}}</small>
  </div>
  @endforeach
  @auth
- <form action="{{ route('comments.store', $post->id) }}" method="POST">
+ <form action="" method="POST">
  @csrf
  <div class="mb-3">
  <label for="content" class="form-label">Votre commentaire</label>
@@ -24,3 +25,6 @@
  @endauth
 </div>
 @endsection
+
+
+ 

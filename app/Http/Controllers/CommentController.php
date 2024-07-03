@@ -12,7 +12,7 @@ class CommentController extends Controller
 
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+        return view('show', compact('post'));
     }
 
     public function store(Request $request, Post $post)
@@ -31,7 +31,7 @@ class CommentController extends Controller
             $post->comments()->save($comment);
 
 
-            return redirect()->route('posts.show', $post->id)->with('success', 'Commentaire ajouté avec succès.');
+            return redirect()->route('show', $post->id)->with('success', 'Commentaire ajouté avec succès.');
            }
            
 
