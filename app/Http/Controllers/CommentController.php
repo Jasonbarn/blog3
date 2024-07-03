@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     //
+
+    public function show(Post $post)
+    {
+        return view('posts.show', compact('post'));
+    }
+
     public function store(Request $request, Post $post)
 
     {
