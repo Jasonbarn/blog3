@@ -13,6 +13,12 @@ class PostController extends Controller
     {
         $posts = Post::all();
         return view ('index',compact('posts'));
+
+        $comments = Comment::orderBy('content')->get;
+
+        return view('index', [
+            'comments' => $comments
+        ]);
     }
 
     public function show (Post $post)
@@ -20,5 +26,22 @@ class PostController extends Controller
         $comments = Comment::where('post_id', $post->post_id);
         return view('show',compact('comments', 'post'));
     }
-   
+
+    public function create()
+    {
+        return view('index');
+    }
+
+    public function store(Request $request)
+    {
+
+        Post::create(
+            [
+                'title'=> $request->title,
+                'content'=> $request->content
+                ] );
+    }
+
+
+
 }

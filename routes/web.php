@@ -8,8 +8,9 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/index',[PostController::class, 'store'])->name('index');
-Route::get('/show/{post}',[PostController::class, 'show'])->name('show');
+Route::get('/index',[PostController::class, 'index'])->name('index');
+Route::get('/show',[PostController::class, 'update'])->name('index');
+Route::get('/index/show/{post}',[PostController::class, 'show'])->name('show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

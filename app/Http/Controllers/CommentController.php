@@ -28,12 +28,21 @@ class CommentController extends Controller
             'user_id' => auth()->id(),
             ]);
   
-            $post->comments()->save($comment);
+        $post->comments()->save($comment);
 
 
             return redirect()->route('show', $post->id)->with('success', 'Commentaire ajouté avec succès.');
-           }
+        }
+
+        public function update(Request $request, $id)
+        {
            
+            $comments= Comment::findOrFail($id);
+            $comments->content = $request->content;
+        
+            $comments->save();
+        }
+        
 
     }
 
